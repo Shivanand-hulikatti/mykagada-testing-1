@@ -36,7 +36,7 @@ function App() {
       clientId="HOzSYdElOqKldAOzHybNtpfOyMAgB3N0"
       redirectUri={window.location.origin + "/mykagada-testing-1"}
     >
-      <Router basename="/mykagada-testing-1">
+      <Router>
         <AppRoutes />
       </Router>
     </Auth0Provider>
