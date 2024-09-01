@@ -19,7 +19,7 @@ function ProtectedRoute({ children }) {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/mykagada-testing-1">
       <Routes>
         <Route path="/" element={<ExamManagementLandingPage />} />
         <Route path="/login" element={<Login />} />
