@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import ExamManagementLandingPage from './components/pages/LandingPage';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
@@ -17,17 +17,29 @@ function ProtectedRoute({ children }) {
   return isAuthenticated ? children : <Navigate to="/login" />;
 }
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<ExamManagementLandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path="/dashboard" element={<ProtectedRoute><DashBoard /></ProtectedRoute>} />
+    </Routes>
+  );
+}
+
 function App() {
   return (
-    <Router basename="/mykagada-testing-1">
-      <Routes>
-        <Route path="/" element={<ExamManagementLandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/dashboard" element={<ProtectedRoute><DashBoard /></ProtectedRoute>} />
-      </Routes>
-    </Router>
+    <Auth0Provider
+      domain="YOUR_AUTH0_DOMAIN"
+      clientId="YOUR_AUTH0_CLIENT_ID"
+      redirectUri={window.location.origin + "/mykagada-testing-1"}
+    >
+      <Router basename="/mykagada-testing-1">
+        <AppRoutes />
+      </Router>
+    </Auth0Provider>
   );
 }
 
