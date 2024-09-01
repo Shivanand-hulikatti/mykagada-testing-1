@@ -32,8 +32,8 @@ function AppRoutes() {
 function App() {
   return (
     <Auth0Provider
-      domain="YOUR_AUTH0_DOMAIN"
-      clientId="YOUR_AUTH0_CLIENT_ID"
+      domain="dev-2mer7v3bgd838fyd.us.auth0.com"
+      clientId="HOzSYdElOqKldAOzHybNtpfOyMAgB3N0"
       redirectUri={window.location.origin + "/mykagada-testing-1"}
     >
       <Router basename="/mykagada-testing-1">
