@@ -16,8 +16,8 @@ export default defineConfig({
         manualChunks: {
           // Split vendor code into a separate chunk
           vendor: ['react', 'react-dom'],
-          // Split other large modules
-          largeModule: ['./src/largeModule.js']
+          // Remove or correct the largeModule chunk if not needed
+          // largeModule: ['./src/largeModule.js']
         }
       }
     },
